@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- <script src="https://code.highcharts.com/7.1.2/highcharts.js"></script>
+<script src="https://code.highcharts.com/7.1.2/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/7.1.2/highcharts-more.js"></script> -->
+
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+
+<title>DEMO</title>
+<!-- CSS -->
+<style>
+/* Style the tab */
+.tab {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+/* Table */
+#customers {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#customers td, #customers th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#customers th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #4CAF50;
+	color: white;
+}
+</style>
+
+</head>
+<body>
+
+	<!-- Real -->
+	<div class="tab">
+		<button class="tablinks" onclick="openCity(event, 'Current')">Current</button>
+		<button class="tablinks" onclick="openCity(event, 'History')">History</button>
+	</div>
+
+	<div id="Current" class="tabcontent">
+		<h1>Status</h1>
+		<div id="feedback"></div>
+		<table id="customers">
+			<tr>
+				<th>Module</th>
+				<th>Time</th>
+				<th>Value</th>
+			</tr>
+			<tr>
+				<td>Tempature</td>
+				<td></td>
+				<td id="tempature"></td>
+			</tr>
+			<tr>
+				<td>SPO2</td>
+				<td></td>
+				<td id="spo2"></td>
+			</tr>
+			<tr>
+				<td>Blood Pressure</td>
+				<td></td>
+				<td id="bp"></td>
+			</tr>
+			<tr>
+				<td>Heart Rate</td>
+				<td></td>
+				<td id="hr"></td>
+			</tr>
+		</table>
+		<div id="realtime" style="width: 100%; height: 500px;"></div>
+	</div>
+
+	<div id="History" class="tabcontent">
+		<div class="container">
+			<button onclick="getTempatureAvg()">Tempature</button>
+			<button onclick="getSpo2Avg()">SPO2</button>
+			<button onclick="getHeartRateAvg()">HR</button>
+			<button onclick="getBloodPresureAvg()">BP</button>
+		</div>
+		<div style="width: 100%; height: 300px; display: none;" id="tempchart"></div>
+		<div style="width: 100%; height: 300px; display: none;" id="spo2chart"></div>
+		<div style="width: 100%; height: 300px; display: none;" id="hrchart"></div>
+		<div style="width: 100%; height: 300px; display: none;" id="bpchart"></div>
+	</div>
+
+
+
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+</html>
